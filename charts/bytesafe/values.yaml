@@ -1,7 +1,7 @@
 image:
   repository: bytesafe/bytesafe-ce
   pullPolicy: IfNotPresent
-  tag: "v1.0.12"
+  tag: "v1.0.13"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -178,6 +178,18 @@ externalDatabase:
   ## Name of an existing secret resource containing the DB password in a 'password' key
   ##
   existingSecret: ""
+  ## @param externalDatabase.existingAdminSecret Secret containing the admin password of an external PostgreSQL instance to connect (only if postgresql.enabled=false)
+  ## Name of an existing secret resource containing the DB password in a 'password' key
+  ##
+  existingAdminSecret: ""
+  ## Username key to be retrieved from Postgres Admin secret
+  ## @param externalDatabase.existingAdminSecretUsernameKey Username key for the existing secret containing the external postgres admin username
+  ##
+  existingAdminSecretUsernameKey: ""
+  ## Password key to be retrieved from Postgres Admin secret
+  ## @param externalDatabase.existingAdminSecretPasswordKey Password key for the existing secret containing the external postgres admin password
+  ##
+  existingAdminSecretPasswordKey: ""
   ## @param externalDatabase.database Database inside an external PostgreSQL to connect (only if postgresql.enabled=false)
   ##
   database: bytesafe

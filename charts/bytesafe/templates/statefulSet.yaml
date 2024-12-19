@@ -112,8 +112,13 @@ spec:
             - name: DB_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.externalDatabase.existingSecret }}
-                  key: DB_ADMIN_PASSWORD
+                  name: {{ .Values.externalDatabase.existingAdminSecret }}
+                  key: {{ .Values.redis.auth.existingAdminSecretPasswordKey }}
+            - name: DB_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalDatabase.existingAdminSecret }}
+                  key: {{ .Values.redis.auth.existingAdminSecretUsernameKey }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -126,6 +131,7 @@ spec:
                 secretKeyRef:
                   name: bytesafe-secrets
                   key: DB_ADMIN_PASSWORD
+
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
