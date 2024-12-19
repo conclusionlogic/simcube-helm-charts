@@ -178,6 +178,14 @@ externalDatabase:
   ## Name of an existing secret resource containing the DB password in a 'password' key
   ##
   existingSecret: ""
+  ## Username key to be retrieved from Postgres secret
+  ## @param externalDatabase.existingSecretUsernameKey Username key for the existing secret containing the external postgres username
+  ##
+  existingSecretUsernameKey: ""
+  ## Password key to be retrieved from Postgres secret
+  ## @param externalDatabase.existingSecretPasswordKey Password key for the existing secret containing the external postgres password
+  ##
+  existingSecretPasswordKey: ""
   ## @param externalDatabase.existingAdminSecret Secret containing the admin password of an external PostgreSQL instance to connect (only if postgresql.enabled=false)
   ## Name of an existing secret resource containing the DB password in a 'password' key
   ##

@@ -113,17 +113,22 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.externalDatabase.existingAdminSecret }}
-                  key: {{ .Values.redis.auth.existingAdminSecretPasswordKey }}
+                  key: {{ .Values.externalDatabase.existingAdminSecretPasswordKey }}
             - name: DB_ADMIN_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.externalDatabase.existingAdminSecret }}
-                  key: {{ .Values.redis.auth.existingAdminSecretUsernameKey }}
+                  key: {{ .Values.externalDatabase.existingAdminSecretUsernameKey }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.externalDatabase.existingSecret }}
-                  key: DB_PASSWORD
+                  key: {{ .Values.externalDatabase.existingSecretPasswordKey }}
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.externalDatabase.existingSecret }}
+                  key: {{ .Values.externalDatabase.existingSecretUsernameKey }}
             {{- end }}
             {{- if and .Values.externalDatabase.enabled .Values.externalDatabase.password }}
             - name: DB_ADMIN_PASSWORD
